@@ -1,0 +1,49 @@
+<!-- Partial: header (usado por todas las páginas) -->
+<!-- ÚNICO HEADER: este archivo es la única fuente del <nav> y del .mobile-menu.
+     No duplicar el bloque .mobile-menu en las páginas (ver pages/*.html).
+     Cualquier cambio en el header / menú debe hacerse aquí. -->
+<nav class="nav-dark" role="navigation" aria-label="Main">
+  <div class="nav-inner container">
+    <a href="index.html" class="nav-logo" aria-label="Fumigaciones Navales — Inicio">
+      <img src="../img/logo_fumigaciones_navales.png" alt="Logo Fumigaciones Navales" class="logo-img">
+    </a>
+
+    <ul class="nav-links" role="menubar" aria-hidden="false">
+      <li role="none"><a role="menuitem" href="index.html" class="nav-link">Inicio</a></li>
+      <li role="none"><a role="menuitem" href="nosotros.html" class="nav-link">¿Quiénes somos?</a></li>
+      <li role="none"><a role="menuitem" href="testimonios.html" class="nav-link">Testimonios</a></li>
+    </ul>
+
+    <div class="nav-cta">
+      <a href="index.html#contacto" class="btn btn-primary">Solicitar Inspección</a>
+    </div>
+
+    <button id="hamburger" class="hamburger" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobileMenu" type="button">
+      <span class="h-line"></span>
+      <span class="h-line"></span>
+      <span class="h-line"></span>
+    </button>
+  </div>
+</nav>
+
+<!-- mobile menu: overlay oscuro, único en includes -->
+<div id="mobileMenu" class="mobile-menu" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Menú principal">
+  <div class="mobile-menu-panel" role="document">
+
+    <!-- botón cerrar: tiene id para que script.js lo encuentre -->
+    <button id="mobileMenuClose" class="mobile-menu-close" aria-label="Cerrar menú" type="button">✕</button>
+
+    <nav class="mobile-menu-nav" role="navigation" aria-label="Navegación principal">
+      <ul>
+        <li><a href="index.html" class="nav-link">Inicio</a></li>
+        <li><a href="nosotros.html" class="nav-link">¿Quiénes somos?</a></li>
+        <li><a href="testimonios.html" class="nav-link">Testimonios</a></li>
+      </ul>
+
+      <div class="mobile-menu-cta" style="margin-top:16px;">
+      <a href="index.html#contacto" class="btn btn-primary btn-block">Solicitar Inspección</a>
+      <a href="tel:+521000000000" class="btn btn-outline btn-block" style="margin-top:8px;">Hablar con un especialista</a>
+    </div>
+    </nav>
+  </div>
+</div>
