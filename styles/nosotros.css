@@ -880,11 +880,12 @@ footer {
 @media (max-width: 768px) {
   .page-hero {
     padding: 100px 24px 60px;
-    min-height: auto;
+    min-height: 500px;
+    background-position: center 20%;
   }
 
   .page-hero-title {
-    font-size: clamp(28px, 5vw, 40px);
+    font-size: clamp(28px, 5vw, 40px, 3px);
   }
 
   .page-hero-stat {
@@ -1302,7 +1303,7 @@ footer {
 /* ── EXTRA SMALL  (≤ 420px) ── */
 @media (max-width: 420px) {
 
-  .page-hero-title { font-size: clamp(29px, 6vw, 37px); }
+  .page-hero-title { font-size: 35px}
   .page-hero-sub { font-size: 19.5px; }
 
   .section-title { font-size: clamp(27px, 5vw, 35px); }
