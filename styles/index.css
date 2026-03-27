@@ -2259,6 +2259,7 @@ footer {
     position: relative;
     top: -38%;
     padding: 0 24px;
+    z-index: 5;
   }
 
   #hero {
