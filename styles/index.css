@@ -680,7 +680,7 @@ h2.section-title span {
   color: var(--white);
   display: block;
   font-weight: 600;
-  font-size: 14px;
+  font-size: 16px;
   margin-bottom: 2px;
 }
 
@@ -2316,6 +2316,10 @@ footer {
   .trust-bar-inner {
     gap: 16px;
     padding: 0 24px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: start;
+    align-items: start;
   }
 
   .trust-item {
@@ -2323,6 +2327,9 @@ footer {
     white-space: normal;
     flex: 1;
     min-width: 140px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   /* Problema */
@@ -2834,11 +2841,12 @@ footer {
   }
 
   h2, .section-title {
-    font-size: calc(1.8rem + 3px);
+    font-size: calc(1.8rem + 3px) !important;
+    margin-bottom: 12px;
   }
 
   h3, .solucion-title {
-    font-size: calc(1.4rem + 3px);
+    font-size: calc(1.8rem + 3px);
   }
 
   /* Textos */
