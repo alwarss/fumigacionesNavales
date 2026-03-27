@@ -1152,3 +1152,178 @@ footer {
     gap: 20px;
   }
 }
+
+
+
+
+
+
+
+
+/* ── TABLET  (≤ 900px) ── */
+@media (max-width: 900px) {
+
+  .page-hero-title { font-size: clamp(41px, 5vw, 57px); }
+  .page-hero-sub { font-size: 21px; }
+
+  .quienes-lead { font-size: 22px; }
+  .quienes-body { font-size: 19.5px; }
+  .origin-quote { font-size: 26px; }
+  .pilar-name { font-size: 18.5px; }
+  .pilar-desc { font-size: 17px; }
+
+  .tl-title { font-size: 21px; }
+  .tl-text { font-size: 18px; }
+  .sb-num { font-size: 49px; }
+  .sb-label { font-size: 17.5px; }
+
+  .paso-titulo { font-size: 18.5px; }
+  .paso-texto { font-size: 17px; }
+  .detail-title { font-size: 17.5px; }
+  .detail-text { font-size: 16.5px; }
+
+  .expansion-title { font-size: 18px; }
+  .expansion-desc { font-size: 17px; }
+  .compromiso-title { font-size: 17.5px; }
+  .compromiso-desc { font-size: 16.5px; }
+
+  .final-cta h3 { font-size: clamp(27px, 3vw, 37px); }
+  .final-cta p { font-size: 20px; }
+
+  .footer-logo { font-size: 23px; }
+  .footer-tagline { font-size: 18px; }
+  .footer-contact a { font-size: 17.5px; }
+  .footer-col-title { font-size: 15.5px; }
+  .footer-col a { font-size: 18px; }
+  .footer-copy { font-size: 16.5px; }
+}
+
+
+/* ── MOBILE  (≤ 768px) ── */
+@media (max-width: 768px) {
+
+  .page-hero-title { font-size: clamp(33px, 6vw, 49px); }
+  .page-hero-sub { font-size: 21px; }
+
+  .section-label { font-size: 17.5px; }
+  .section-title { font-size: clamp(31px, 5vw, 45px); }
+
+  .quienes-lead { font-size: 21.5px; }
+  .quienes-body { font-size: 19.5px; }
+  .origin-label { font-size: 15px; }
+  .origin-quote { font-size: 25px; }
+  .origin-num { font-size: 41px; }
+  .origin-desc { font-size: 16.5px; }
+  .pilar-icon { font-size: 31px; }
+  .pilar-name { font-size: 18px; }
+  .pilar-desc { font-size: 16.5px; }
+
+  .tray-header p { font-size: 20px; }
+  .tl-period { font-size: 15px; }
+  .tl-title { font-size: 20.5px; }
+  .tl-text { font-size: 17.5px; }
+  .sb-num { font-size: 47px; }
+  .sb-label { font-size: 17px; }
+
+  .proceso-header p { font-size: 20px; }
+  .paso-titulo { font-size: 18px; }
+  .paso-texto { font-size: 16.5px; }
+  .detail-step-num { font-size: 37px; }
+  .detail-title { font-size: 17px; }
+  .detail-text { font-size: 16px; }
+  .detail-highlights li { font-size: 15px; }
+
+  .cob-header p { font-size: 20px; }
+  .expansion-icon { font-size: 35px; }
+  .expansion-title { font-size: 17.5px; }
+  .expansion-desc { font-size: 16.5px; }
+  .compromiso-icon { font-size: 31px; }
+  .compromiso-title { font-size: 17px; }
+  .compromiso-desc { font-size: 16px; }
+
+  .final-cta h3 { font-size: clamp(25px, 4vw, 35px); }
+  .final-cta p { font-size: 19.5px; }
+
+  .footer-logo { font-size: 22px; }
+  .footer-tagline { font-size: 17.5px; }
+  .footer-contact a { font-size: 17px; }
+  .footer-col-title { font-size: 15px; }
+  .footer-col a { font-size: 17.5px; }
+  .footer-copy { font-size: 16px; }
+}
+
+
+/* ── SMALL MOBILE  (≤ 600px) ── */
+@media (max-width: 600px) {
+
+  .page-hero-title { font-size: clamp(31px, 6.5vw, 43px); }
+  .page-hero-sub { font-size: 20px; }
+
+  .section-label { font-size: 17px; }
+  .section-title { font-size: clamp(29px, 5.5vw, 41px); }
+
+  .quienes-lead { font-size: 21px; }
+  .quienes-body { font-size: 19px; }
+  .origin-quote { font-size: 24px; }
+  .origin-num { font-size: 39px; }
+  .pilar-name { font-size: 17.5px; }
+  .pilar-desc { font-size: 16px; }
+
+  .tray-header p { font-size: 19.5px; }
+  .tl-title { font-size: 20px; }
+  .tl-text { font-size: 17px; }
+  .sb-num { font-size: 45px; }
+  .sb-label { font-size: 16.5px; }
+
+  .proceso-header p { font-size: 19.5px; }
+  .paso-titulo { font-size: 17.5px; }
+  .paso-texto { font-size: 16px; }
+  .detail-title { font-size: 16.5px; }
+  .detail-text { font-size: 15.5px; }
+
+  .cob-header p { font-size: 19.5px; }
+  .expansion-title { font-size: 17px; }
+  .expansion-desc { font-size: 16px; }
+  .compromiso-title { font-size: 16.5px; }
+  .compromiso-desc { font-size: 15.5px; }
+
+  .final-cta h3 { font-size: clamp(23px, 4.5vw, 31px); }
+  .final-cta p { font-size: 19px; }
+
+  .footer-logo { font-size: 21px; }
+  .footer-tagline { font-size: 17px; }
+  .footer-contact a { font-size: 16.5px; }
+  .footer-col-title { font-size: 14.5px; }
+  .footer-col a { font-size: 17px; }
+  .footer-copy { font-size: 15.5px; }
+}
+
+
+/* ── EXTRA SMALL  (≤ 420px) ── */
+@media (max-width: 420px) {
+
+  .page-hero-title { font-size: clamp(29px, 6vw, 37px); }
+  .page-hero-sub { font-size: 19.5px; }
+
+  .section-title { font-size: clamp(27px, 5vw, 35px); }
+
+  .quienes-lead { font-size: 20px; }
+  .origin-quote { font-size: 23px; }
+  .origin-num { font-size: 37px; }
+
+  .tl-title { font-size: 19.5px; }
+  .tl-text { font-size: 16.5px; }
+  .sb-num { font-size: 41px; }
+
+  .paso-titulo { font-size: 17px; }
+  .paso-texto { font-size: 15.5px; }
+
+  .expansion-title { font-size: 16.5px; }
+  .compromiso-title { font-size: 16px; }
+
+  .final-cta h3 { font-size: clamp(21px, 4vw, 29px); }
+  .final-cta p { font-size: 18px; }
+
+  .footer-tagline { font-size: 16px; }
+  .footer-col a { font-size: 16px; }
+}
