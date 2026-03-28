@@ -512,47 +512,79 @@
     </div>
 
     <div class="form-card reveal">
-      <div class="form-grid">
-        <div class="form-group">
-          <label for="nombre">Nombre</label>
-          <input type="text" id="nombre" name="nombre" placeholder="Su nombre completo">
+      <form id="contactForm" novalidate>
+        <div class="form-grid">
+
+          <div class="form-group">
+            <label for="nombre">Nombre <span class="required">*</span></label>
+            <input type="text" id="nombre" placeholder="Su nombre completo" required>
+          </div>
+
+          <div class="form-group">
+            <label for="empresa">Empresa <span class="required">*</span></label>
+            <input type="text" id="empresa" placeholder="Nombre de la empresa" required>
+          </div>
+
+          <div class="form-group">
+            <label for="telefono">Teléfono <span class="required">*</span></label>
+            <input type="tel" id="telefono" placeholder="+52 (000) 000-0000" required>
+          </div>
+
+          <div class="form-group">
+            <label for="correo">Correo electrónico <span class="required">*</span></label>
+            <input type="email" id="correo" placeholder="correo@empresa.com" required>
+          </div>
+
+          <div class="form-group">
+            <label for="ciudad">Ciudad <span class="required">*</span></label>
+            <input type="text" id="ciudad" placeholder="Ciudad de la instalación" required>
+          </div>
+
+          <div class="form-group">
+            <label for="tipo">Tipo de instalación <span class="required">*</span></label>
+            <select id="tipo" required>
+              <option value="" disabled selected>Seleccione un tipo</option>
+              <option value="Planta de alimentos / bebidas">Planta de alimentos / bebidas</option>
+              <option value="Industria farmacéutica">Industria farmacéutica</option>
+              <option value="Industria petroquímica">Industria petroquímica</option>
+              <option value="Centro de distribución / logística">Centro de distribución / logística</option>
+              <option value="Instalación naviera / portuaria">Instalación naviera / portuaria</option>
+              <option value="Comercial / hotelería / restaurante">Comercial / hotelería / restaurante</option>
+              <option value="Otro">Otro</option>
+            </select>
+          </div>
+
         </div>
-        <div class="form-group">
-          <label for="empresa">Empresa</label>
-          <input type="text" id="empresa" name="empresa" placeholder="Nombre de la empresa">
+
+        <div class="form-submit">
+          <button type="submit" class="btn btn-primary btn-block" id="submitBtn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+              fill="none" stroke="currentColor" stroke-width="2.5"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/>
+              <rect x="9" y="3" width="6" height="4" rx="1"/>
+              <path d="m9 12 2 2 4-4"/>
+            </svg>
+            Solicitar inspección técnica gratuita
+          </button>
         </div>
-        <div class="form-group">
-          <label for="telefono">Teléfono</label>
-          <input type="tel" id="telefono" name="telefono" placeholder="+52 (000) 000-0000">
+
+        <!-- Mensajes de estado -->
+        <div id="formSuccess" style="display:none; margin-top:1.25rem; padding:1rem 1.25rem;
+          background:#d1fae5; border-radius:10px; color:#065f46;
+          font-size:0.95rem; align-items:center; gap:0.5rem;">
+          ✅ ¡Solicitud enviada! Un especialista se pondrá en contacto pronto.
         </div>
-        <div class="form-group">
-          <label for="correo">Correo electrónico</label>
-          <input type="email" id="correo" name="correo" placeholder="correo@empresa.com">
+
+        <div id="formError" style="display:none; margin-top:1.25rem; padding:1rem 1.25rem;
+          background:#fee2e2; border-radius:10px; color:#991b1b;
+          font-size:0.95rem; align-items:center; gap:0.5rem;">
+          ❌ Hubo un error al enviar. Intente de nuevo o escríbanos por
+          <a href="https://wa.me/529211033973" target="_blank"
+            style="color:#991b1b; text-decoration:underline; margin-left:4px;">WhatsApp</a>.
         </div>
-        <div class="form-group">
-          <label for="ciudad">Ciudad</label>
-          <input type="text" id="ciudad" name="ciudad" placeholder="Ciudad de la instalación">
-        </div>
-        <div class="form-group">
-          <label for="tipo">Tipo de instalación</label>
-          <select id="tipo" name="tipo">
-            <option value="" disabled selected>Seleccione un tipo</option>
-            <option value="alimentos">Planta de alimentos / bebidas</option>
-            <option value="farmaceutica">Industria farmacéutica</option>
-            <option value="petroquimica">Industria petroquímica</option>
-            <option value="logistica">Centro de distribución / logística</option>
-            <option value="naviero">Instalación naviera / portuaria</option>
-            <option value="comercial">Comercial / hotelería / restaurante</option>
-            <option value="otro">Otro</option>
-          </select>
-        </div>
-      </div>
-      <div class="form-submit">
-        <button type="submit" class="btn btn-primary btn-block">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><path d="m9 12 2 2 4-4"/></svg>
-          Solicitar inspección técnica gratuita
-        </button>
-      </div>
+
+      </form>
     </div>
   </div>
 </section>

@@ -243,3 +243,205 @@
   });
 })();
 
+// ── Google Forms — Fumigaciones Navales ──────────────────────────────────────
+
+const GOOGLE_FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSdDsUD9yEjINhT1d5EaJuuXQN3RqOdeAg-Fqv9wMf3KbbaqOw/formResponse';
+
+const ENTRY_IDS = {
+  nombre:   'entry.715289710',
+  empresa:  'entry.2136184082',
+  telefono: 'entry.1981926976',
+  correo:   'entry.883440817',
+  ciudad:   'entry.1618702615',
+  tipo:     'entry.90493315'
+};
+
+// ── Reglas de validación ─────────────────────────────────────────────────────
+
+const VALIDACIONES = {
+  nombre: {
+    validar: (v) => v.trim().length >= 3 && /^[a-záéíóúüñA-ZÁÉÍÓÚÜÑ\s]+$/.test(v.trim()),
+    mensaje: 'Ingrese su nombre completo (solo letras, mínimo 3 caracteres).'
+  },
+  empresa: {
+    validar: (v) => v.trim().length >= 2,
+    mensaje: 'Ingrese el nombre de la empresa (mínimo 2 caracteres).'
+  },
+  telefono: {
+    // Acepta formatos: +52 921 103 3973 | 9211033973 | (921) 103-3973 | +1-800-555-0000
+    validar: (v) => /^[\+]?[(]?[0-9]{1,4}[)]?[-\s\.]?[(]?[0-9]{1,3}[)]?[-\s\.]?[0-9]{3,4}[-\s\.]?[0-9]{3,4}$/.test(v.trim().replace(/\s+/g, '')),
+    mensaje: 'Ingrese un número de teléfono válido. Ej: +52 921 103 3973'
+  },
+  correo: {
+    // Valida formato estándar de email
+    validar: (v) => /^[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}$/.test(v.trim()),
+    mensaje: 'Ingrese un correo electrónico válido. Ej: nombre@empresa.com'
+  },
+  ciudad: {
+    validar: (v) => v.trim().length >= 2 && /^[a-záéíóúüñA-ZÁÉÍÓÚÜÑ\s\-\.]+$/.test(v.trim()),
+    mensaje: 'Ingrese una ciudad válida (solo letras, mínimo 2 caracteres).'
+  },
+  tipo: {
+    validar: (v) => v !== '' && v !== null,
+    mensaje: 'Seleccione el tipo de instalación.'
+  }
+};
+
+// ── Helpers de UI ─────────────────────────────────────────────────────────────
+
+function mostrarError(id, mensaje) {
+  const campo = document.getElementById(id);
+  if (!campo) return;
+
+  campo.classList.add('input-error');
+  campo.classList.remove('input-ok');
+
+  // Busca o crea el elemento de error
+  let errEl = campo.parentElement.querySelector('.field-error');
+  if (!errEl) {
+    errEl = document.createElement('span');
+    errEl.className = 'field-error';
+    campo.parentElement.appendChild(errEl);
+  }
+  errEl.textContent = mensaje;
+  errEl.style.display = 'block';
+}
+
+function limpiarError(id) {
+  const campo = document.getElementById(id);
+  if (!campo) return;
+
+  campo.classList.remove('input-error');
+  campo.classList.add('input-ok');
+
+  const errEl = campo.parentElement.querySelector('.field-error');
+  if (errEl) errEl.style.display = 'none';
+}
+
+function limpiarTodos() {
+  Object.keys(VALIDACIONES).forEach(limpiarError);
+}
+
+// ── Validación en tiempo real (al salir del campo) ────────────────────────────
+
+Object.keys(VALIDACIONES).forEach((id) => {
+  const campo = document.getElementById(id);
+  if (!campo) return;
+
+  // Al salir del campo (blur)
+  campo.addEventListener('blur', () => {
+    const valor = campo.value;
+    if (valor === '' || valor === null) return; // No mostrar error si está vacío al inicio
+    if (!VALIDACIONES[id].validar(valor)) {
+      mostrarError(id, VALIDACIONES[id].mensaje);
+    } else {
+      limpiarError(id);
+    }
+  });
+
+  // Al escribir, si ya había error → revalidar en tiempo real
+  campo.addEventListener('input', () => {
+    const tieneError = campo.classList.contains('input-error');
+    if (!tieneError) return;
+    if (VALIDACIONES[id].validar(campo.value)) {
+      limpiarError(id);
+    }
+  });
+});
+
+// ── Validación completa al enviar ─────────────────────────────────────────────
+
+function validarFormulario() {
+  let esValido = true;
+
+  Object.keys(VALIDACIONES).forEach((id) => {
+    const campo = document.getElementById(id);
+    if (!campo) return;
+
+    const valor = campo.value;
+
+    if (!valor || valor.trim() === '') {
+      mostrarError(id, 'Este campo es obligatorio.');
+      esValido = false;
+    } else if (!VALIDACIONES[id].validar(valor)) {
+      mostrarError(id, VALIDACIONES[id].mensaje);
+      esValido = false;
+    } else {
+      limpiarError(id);
+    }
+  });
+
+  return esValido;
+}
+
+// ── Envío del formulario ──────────────────────────────────────────────────────
+
+document.getElementById('contactForm').addEventListener('submit', async function (e) {
+  e.preventDefault();
+
+  const btn        = document.getElementById('submitBtn');
+  const successMsg = document.getElementById('formSuccess');
+  const errorMsg   = document.getElementById('formError');
+
+  // Ocultar mensajes previos
+  successMsg.style.display = 'none';
+  errorMsg.style.display   = 'none';
+
+  // Validar antes de enviar
+  if (!validarFormulario()) {
+    // Hacer scroll al primer campo con error
+    const primerError = document.querySelector('.input-error');
+    if (primerError) primerError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    return;
+  }
+
+  // Estado de carga
+  btn.disabled = true;
+  btn.innerHTML = `
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+      fill="none" stroke="currentColor" stroke-width="2.5"
+      stroke-linecap="round" stroke-linejoin="round"
+      style="animation: spin 1s linear infinite;">
+      <path d="M21 12a9 9 0 1 1-6.219-8.56"/>
+    </svg>
+    Enviando...`;
+
+  // Construir FormData
+  const formData = new FormData();
+  formData.append(ENTRY_IDS.nombre,   document.getElementById('nombre').value.trim());
+  formData.append(ENTRY_IDS.empresa,  document.getElementById('empresa').value.trim());
+  formData.append(ENTRY_IDS.telefono, document.getElementById('telefono').value.trim());
+  formData.append(ENTRY_IDS.correo,   document.getElementById('correo').value.trim().toLowerCase());
+  formData.append(ENTRY_IDS.ciudad,   document.getElementById('ciudad').value.trim());
+  formData.append(ENTRY_IDS.tipo,     document.getElementById('tipo').value);
+
+  try {
+    await fetch(GOOGLE_FORM_URL, {
+      method: 'POST',
+      body: formData,
+      mode: 'no-cors'
+    });
+
+    // Éxito
+    successMsg.style.display = 'flex';
+    this.reset();
+    limpiarTodos();
+    successMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+  } catch (error) {
+    errorMsg.style.display = 'flex';
+    console.error('Error al enviar el formulario:', error);
+
+  } finally {
+    btn.disabled = false;
+    btn.innerHTML = `
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+        fill="none" stroke="currentColor" stroke-width="2.5"
+        stroke-linecap="round" stroke-linejoin="round">
+        <path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/>
+        <rect x="9" y="3" width="6" height="4" rx="1"/>
+        <path d="m9 12 2 2 4-4"/>
+      </svg>
+      Solicitar inspección técnica gratuita`;
+  }
+});

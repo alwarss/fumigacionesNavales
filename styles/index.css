@@ -2882,3 +2882,28 @@ footer {
     font-size: calc(0.9rem + 3px);
   }
 }
+
+
+/* ── Validación de formulario ── */
+.input-error {
+  border-color: #ef4444 !important;
+  background-color: #fff5f5 !important;
+}
+
+.input-ok {
+  border-color: #22c55e !important;
+}
+
+.field-error {
+  display: block;
+  color: #ef4444;
+  font-size: 0.78rem;
+  margin-top: 0.3rem;
+  padding-left: 2px;
+}
+
+/* Animación del spinner al enviar */
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
