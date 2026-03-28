@@ -2736,7 +2736,7 @@ footer {
   }
 
   .cta-strip h3 {
-    font-size: clamp(16px, 3vw, 24px);
+    font-size: 25px;
     margin-bottom: 4px;
   }
 
@@ -2810,7 +2810,6 @@ footer {
   }
 
   .trust-item {
-    text-align: center;
     flex: none;
     min-width: unset;
   }
@@ -2864,7 +2863,7 @@ footer {
 
   /* Botones */
   .btn {
-    font-size: calc(0.9rem + 3px);
+    font-size: calc(16px);
   }
 
   /* Cards */
